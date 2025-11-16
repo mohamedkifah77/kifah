@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UFC 322 - Live Stream</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background: #0d0d0d; color: #fff; user-select: none; }
+    header { background: linear-gradient(90deg, #ff0000, #600000); padding: 20px; text-align: center; font-size: 28px; font-weight: bold; }
+    .container { width: 90%; max-width: 1200px; margin: auto; padding: 20px 0; }
+    .section-title { font-size: 24px; margin: 20px 0 10px; border-left: 4px solid #ff0000; padding-left: 10px; }
+    .video-frame { width: 100%; height: 450px; background: #111; border: 2px solid #ff0000; border-radius: 10px; margin-bottom: 20px; overflow: hidden; }
+    .servers { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+    .server-btn { background: #222; padding: 10px 20px; border: 1px solid #ff0000; border-radius: 6px; cursor: pointer; transition: 0.2s; color: #fff; }
+    .server-btn.active { background: #ff0000; color: #000; }
+    .servers-btn:hover { transform: translateY(-2px); }
+    .fighters { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .fighter-card { background: #1a1a1a; padding: 15px; border-radius: 10px; text-align: center; border: 1px solid #333; transition: 0.3s; }
+    .fighter-card:hover { border-color: #ff0000; transform: translateY(-5px); }
+    .fighter-card img { width: 100%; border-radius: 10px; margin-bottom: 10px; }
+    footer { text-align: center; padding: 20px; margin-top: 40px; background: #111; border-top: 1px solid #333; font-size: 14px; opacity: 0.9; }
+    .countdown { margin: 20px auto; font-size: 26px; color: #ff0000; text-align: center; font-weight: bold; }
+    .note { margin-top: 8px; font-size: 13px; color: #ccc; text-align: center; }
+  </style>
+</head>
+<body>
+  <header>UFC 322 - Live Stream</header>
+
+  <div class="container">
+    <div class="countdown" id="countdown">Event starts in: --:--:--</div>
+
+    <h2 class="section-title">Live Stream</h2>
+    <div class="video-frame" id="main-video">
+      <video id="live-video" controls muted autoplay style="width:100%;height:100%;background:#000;border-radius:8px;" playsinline></video>
+    </div>
+
+    <div class="servers" id="servers">
+      <button class="server-btn" data-server="server1">Server 1</button>
+      <button class="server-btn" data-server="server2">Server 2</button>
+      <button class="server-btn" data-server="server3">Server 3</button>
+    </div>
+    <div class="note">Select a server to start watching. Default server is Server 1.</div>
+
+    <h2 class="section-title">Event Information</h2>
+    <p>UFC 322 features a powerful lineup of intense fights between top fighters from around the world. This event introduces a major main event that may impact the rankings significantly.</p>
+
+    <h2 class="section-title">Participating Fighters</h2>
+    <div class="fighters">
+      <div class="fighter-card">
+         <img src="https://combatedgeprodbs.blob.core.windows.net/images/Weili-Zhang.png?" alt="Fighter 1" />
+        <h3>Zhang Weili</h3>
+        <p>Stats – Records – Info</p>
+      </div>
+      <div class="fighter-card">
+        <img src="https://fightersrec.com/files/fighter_Islam--Makhachev.png" alt="Fighter 2" />
+        <h3>Islam Makhachev</h3>
+        <p>Stats – Records – Info</p>
+      </div>
+      <div class="fighter-card">
+        <img src="https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-11/DELLA_MADDALENA_JACK_L_BELT_11-15.png?itok=1B1NYnlR" alt="Fighter 3" />
+        <h3>Jack Della Maddalena</h3>
+        <p>Stats – Records – Info</p>
+      </div>
+      <div class="fighter-card">
+        <img src="https://ufc.com/images/styles/athlete_bio_full_body/s3/2025-11/SHEVCHENKO_VALENTINA_L_BELT_11-15.png?itok=7_vTDJWZ" alt="Fighter 4" />
+        <h3>Valentina Shevchenko</h3>
+        <p>Stats – Records – Info</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>© 2025 - UFC 322 Live Stream Page</footer>
+
+  <!-- ====== حماية الصفحة من الفحص ====== -->
+  <script>
+    // منع زر الفأرة الأيمن
+    document.addEventListener('contextmenu', e => e.preventDefault());
+
+    // منع الاختصارات الأساسية
+    document.addEventListener('keydown', function(e) {
+      if (
+        e.key === 'F12' ||
+        (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+        (e.ctrlKey && e.key === 'U')
+      ) {
+        e.preventDefault();
+        alert('Inspect is disabled!');
+      }
+    });
+
+    // كشف فتح DevTools (غير مضمون 100%)
+    let opened = false;
+    const threshold = 180;
+    setInterval(() => {
+      if (
+        window.outerHeight - window.innerHeight > threshold ||
+        window.outerWidth - window.innerWidth > threshold
+      ) {
+        if (!opened) alert('DevTools detected!');
+        opened = true;
+      } else opened = false;
+    }, 1000);
+
+    // منع النسخ والتحديد
+    document.addEventListener('copy', e => e.preventDefault());
+    document.addEventListener('cut', e => e.preventDefault());
+    document.addEventListener('selectstart', e => e.preventDefault());
+  </script>
+
+  <script>
+    const SERVERS = {
+      server1: 'https://kirstream.onrender.com/index.php?token=hmek27&url=http://gqwfgnmx.russtv.net/iptv/2H5KNCPFYBPUWY/2505/index.m3u8',
+      server2: 'https://kirstream.onrender.com/index.php?token=hmek27&url=http://0ab1d838.ottolok.net/iptv/LB4DLHKTCTRSH5/2505/index.m3u8',
+      server3: 'https://kirstream.onrender.com/index.php?token=hmek27&url=http://5.9.119.146:8883/rmc1/index.m3u8'
+    };
+
+    function loadHlsAndInit(defaultServerKey = 'server1') {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/hls.js@latest';
+      script.onload = () => { initServerButtons(); changeServer(defaultServerKey); };
+      script.onerror = () => {
+        document.getElementById('main-video').innerHTML = '<div style="padding:20px;color:#ccc;text-align:center;">Failed to load HLS player. Reload the page.</div>';
+      };
+      document.head.appendChild(script);
+    }
+
+    function loadStream(url) {
+      const video = document.getElementById('live-video');
+      if (window._hlsInstance) { try { window._hlsInstance.destroy(); } catch(e) {} window._hlsInstance = null; }
+
+      if (window.Hls && Hls.isSupported()) {
+        const hls = new Hls(); window._hlsInstance = hls;
+        hls.loadSource(url); 
+        hls.attachMedia(video);
+
+        video.muted = true;
+        video.autoplay = true;
+        video.play().catch(()=>{});
+      } 
+      else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = url;
+        video.muted = true;
+        video.autoplay = true;
+        video.addEventListener('loadedmetadata', () => video.play().catch(()=>{}));
+      } 
+      else {
+        document.getElementById('main-video').innerHTML = '<div style="padding:20px;color:#ccc;text-align:center;">Your browser does not support HLS.</div>';
+      }
+    }
+
+    function changeServer(serverKey) {
+      const url = SERVERS[serverKey];
+      if (!url) return;
+      loadStream(url);
+      document.querySelectorAll('.server-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-server') === serverKey);
+      });
+    }
+
+    function initServerButtons() {
+      document.querySelectorAll('.server-btn').forEach(btn => {
+        btn.addEventListener('click', () => { changeServer(btn.getAttribute('data-server')); });
+      });
+    }
+
+    (function startCountdown(){
+      const eventDate = new Date('2025-11-20T22:00:00').getTime();
+      const countdownEl = document.getElementById('countdown');
+      const timer = setInterval(() => {
+        const diff = eventDate - Date.now();
+        if (diff <= 0) { countdownEl.innerHTML = 'The event is live now!'; clearInterval(timer); return; }
+        const h = String(Math.floor(diff / 3600000)).padStart(2,'0');
+        const m = String(Math.floor((diff % 3600000) / 60000)).padStart(2,'0');
+        const s = String(Math.floor((diff % 60000) / 1000)).padStart(2,'0');
+        countdownEl.innerHTML = `Event starts in: ${h}:${m}:${s}`;
+      }, 1000);
+    })();
+
+    document.addEventListener('DOMContentLoaded', () => { loadHlsAndInit('server1'); });
+  </script>
+</body>
+</html>
